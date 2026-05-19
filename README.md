@@ -7,6 +7,35 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Deploy na Vercel
+
+Este projeto ja esta preparado para deploy na Vercel com Laravel + PHP runtime.
+
+### Arquivos adicionados para Vercel
+
+- `api/index.php` (entrypoint serverless da aplicacao)
+- `vercel.json` (runtime PHP, rewrites e variaveis seguras para ambiente serverless)
+- `.vercelignore` (reduz upload de arquivos desnecessarios)
+- `.env.vercel.example` (modelo das variaveis para configurar no painel da Vercel)
+
+### Passo a passo rapido
+
+1. Suba este repositorio para GitHub/GitLab.
+2. Importe o projeto no painel da Vercel.
+3. Em **Settings > Environment Variables**, adicione as variaveis de `.env.vercel.example` (principalmente `APP_KEY`, banco e admin).
+4. Gere uma chave Laravel e use no `APP_KEY`:
+   - `php artisan key:generate --show`
+5. Faça o deploy.
+
+### Importante sobre anexos
+
+O recurso de anexos usa disco local (`public`). Em ambiente serverless da Vercel, o filesystem nao e persistente entre execucoes.
+
+Para anexos persistentes em producao:
+
+1. Configure `FILESYSTEM_DISK=s3`.
+2. Preencha as variaveis `AWS_*` no painel da Vercel.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

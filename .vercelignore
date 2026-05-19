@@ -1,0 +1,8 @@
+.docker
+.git
+docker-compose.yml
+Dockerfile
+Dockerfile.debian
+node_modules
+tests
+vendor
