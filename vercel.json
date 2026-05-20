@@ -4,46 +4,42 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".",
   "functions": {
-    "api/*.php": {
+    "api/index.php": {
       "runtime": "vercel-php@0.7.4"
     }
   },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/build/:path*",
-      "destination": "/public/build/:path*"
+      "src": "/build/(.*)",
+      "dest": "/public/build/$1"
     },
     {
-      "source": "/css/:path*",
-      "destination": "/public/css/:path*"
+      "src": "/css/(.*)",
+      "dest": "/public/css/$1"
     },
     {
-      "source": "/js/:path*",
-      "destination": "/public/js/:path*"
+      "src": "/js/(.*)",
+      "dest": "/public/js/$1"
     },
     {
-      "source": "/images/:path*",
-      "destination": "/public/images/:path*"
+      "src": "/images/(.*)",
+      "dest": "/public/images/$1"
     },
     {
-      "source": "/storage/:path*",
-      "destination": "/public/storage/:path*"
+      "src": "/storage/(.*)",
+      "dest": "/public/storage/$1"
     },
     {
-      "source": "/favicon.ico",
-      "destination": "/public/favicon.ico"
+      "src": "/favicon.ico",
+      "dest": "/public/favicon.ico"
     },
     {
-      "source": "/robots.txt",
-      "destination": "/public/robots.txt"
+      "src": "/robots.txt",
+      "dest": "/public/robots.txt"
     },
     {
-      "source": "/",
-      "destination": "/api/index.php"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/api/index.php"
+      "src": "/(.*)",
+      "dest": "/api/index.php"
     }
   ],
   "env": {
